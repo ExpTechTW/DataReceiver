@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataReceiver", "DataReceiver\DataReceiver.csproj", "{EF63BB42-6467-446D-9A2F-D27C3E056D27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataReceiver.Demo", "DataReceiver.Demo\DataReceiver.Demo.csproj", "{16C68A73-B8AD-4DC2-A543-892B453E14C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF63BB42-6467-446D-9A2F-D27C3E056D27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF63BB42-6467-446D-9A2F-D27C3E056D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF63BB42-6467-446D-9A2F-D27C3E056D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF63BB42-6467-446D-9A2F-D27C3E056D27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C68A73-B8AD-4DC2-A543-892B453E14C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C68A73-B8AD-4DC2-A543-892B453E14C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C68A73-B8AD-4DC2-A543-892B453E14C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C68A73-B8AD-4DC2-A543-892B453E14C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D146E42-9576-4ACE-A715-3998D016B7C9}
+	EndGlobalSection
+EndGlobal
