@@ -1,4 +1,4 @@
-﻿using DataReceiver.Abstractions.Models;
+﻿using DataReceiver.Abstractions.Models.Message;
 using DataReceiver.Implementations;
 
 internal class Program

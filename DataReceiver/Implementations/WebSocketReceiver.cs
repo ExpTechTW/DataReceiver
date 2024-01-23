@@ -1,8 +1,7 @@
-﻿using DataReceiver.Abstractions.Models;
+﻿using DataReceiver.Abstractions.Models.Message;
 using Newtonsoft.Json;
 using System;
 using System.Net.WebSockets;
-using System.Threading.Tasks;
 using Websocket.Client;
 
 namespace DataReceiver.Implementations
@@ -26,11 +25,12 @@ namespace DataReceiver.Implementations
         }
         private void OnRawMessageReceived(ResponseMessage message)
         {
-            if(message.MessageType == WebSocketMessageType.Text && message.Text!= null)
+            if (message.MessageType == WebSocketMessageType.Text && message.Text != null)
             {
                 var messageBase = JsonConvert.DeserializeObject<MessageBase>(message.Text);
-                if(messageBase != null)
+                if (messageBase != null)
                 {
+                    messageBase.RawMessage = message.Text;
                     OnMessageReceived?.Invoke(messageBase);
                 }
             }
