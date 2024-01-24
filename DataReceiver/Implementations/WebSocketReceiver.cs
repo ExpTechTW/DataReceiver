@@ -1,4 +1,5 @@
-﻿using DataReceiver.Abstractions.Models.Message;
+﻿using DataReceiver.Abstractions.Models.WebSocket;
+using DataReceiver.Abstractions.Models.WebSocket.Message;
 using Newtonsoft.Json;
 using System;
 using System.Net.WebSockets;
@@ -6,11 +7,10 @@ using Websocket.Client;
 
 namespace DataReceiver.Implementations
 {
-    public class WebSocketReceiver : IDisposable
+    public class WebSocketReceiver : WebSocketMessageReceiverBase, IDisposable
     {
-        public delegate void WebSocketMessageHandler(MessageBase message);
-        public event WebSocketMessageHandler? OnMessageReceived;
         public readonly WebsocketClient WebSocketClient;
+        private readonly JsonSerializerSettings DefaultSettings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.Auto };
         private IDisposable _disposeObject;
         public static WebSocketReceiver CreateWebsocketClient(Uri targetUri)
         {
@@ -27,12 +27,8 @@ namespace DataReceiver.Implementations
         {
             if (message.MessageType == WebSocketMessageType.Text && message.Text != null)
             {
-                var messageBase = JsonConvert.DeserializeObject<MessageBase>(message.Text);
-                if (messageBase != null)
-                {
-                    messageBase.RawMessage = message.Text;
-                    OnMessageReceived?.Invoke(messageBase);
-                }
+                var messageBase = new WebSocketMessageBase() { RawMessage = message.Text };
+                BroadcastMessage(messageBase);
             }
         }
         private bool disposedValue;

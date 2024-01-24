@@ -1,8 +1,7 @@
 ﻿namespace DataReceiver.Abstractions.Interfaces
 {
-    public interface IMessage
+    public interface IWebSocketMessage
     {
-        public string? MessageType { get; set; }
         public string? RawMessage { get; set; }
     }
 }

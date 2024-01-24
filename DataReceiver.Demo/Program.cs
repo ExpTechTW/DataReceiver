@@ -1,4 +1,4 @@
-﻿using DataReceiver.Abstractions.Models.Message;
+﻿using DataReceiver.Abstractions.Models.WebSocket.Message;
 using DataReceiver.Implementations;
 
 internal class Program
@@ -13,12 +13,12 @@ internal class Program
     }
     public static async void CreateMessageReceiver()
     {
-        WebSocketReceiver receiver = WebSocketReceiver.CreateWebsocketClient(new Uri(""));
+        WebSocketReceiver receiver = WebSocketReceiver.CreateWebsocketClient(new Uri("wss://ws-api.wolfx.jp/sc_eew"));
         receiver.OnMessageReceived += OnMessageReceived;
         await receiver.WebSocketClient.StartOrFail();
     }
-    private static void OnMessageReceived(MessageBase message)
+    private static void OnMessageReceived(WebSocketMessageBase message)
     {
-        Console.WriteLine(message.MessageType);
+        Console.WriteLine(message.RawMessage);
     }
 }

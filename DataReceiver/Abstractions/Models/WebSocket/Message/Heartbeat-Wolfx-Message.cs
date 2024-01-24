@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace DataReceiver.Abstractions.Models.Message
+namespace DataReceiver.Abstractions.Models.WebSocket.Message
 {
-    public class HeartbeatWolfxMessage : MessageBase
+    public class HeartbeatWolfxMessage : WolfxMessageBase
     {
         [JsonProperty("ver")]
         public int? ServerVersion { get; set; }

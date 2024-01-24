@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace DataReceiver.Abstractions.Models.Message
+namespace DataReceiver.Abstractions.Models.WebSocket.Message
 {
-    public class SiChuanWolfxMessage : MessageBase
+    public class SiChuanWolfxMessage : WolfxMessageBase
     {
         public int? ID { get; set; }
         public string? EventID { get; set; }
