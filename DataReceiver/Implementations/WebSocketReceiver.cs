@@ -12,16 +12,11 @@ namespace DataReceiver.Implementations
         public readonly WebsocketClient WebSocketClient;
         private readonly JsonSerializerSettings DefaultSettings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.Auto };
         private IDisposable _disposeObject;
-        public static WebSocketReceiver CreateWebsocketClient(Uri targetUri)
+        public WebSocketReceiver(Uri targetUri)
         {
             WebsocketClient client = new WebsocketClient(targetUri);
-            var result = new WebSocketReceiver(client);
-            return result;
-        }
-        private WebSocketReceiver(WebsocketClient webSocketClient)
-        {
-            WebSocketClient = webSocketClient;
-            _disposeObject = webSocketClient.MessageReceived.Subscribe(OnRawMessageReceived);
+            WebSocketClient = client;
+            _disposeObject = client.MessageReceived.Subscribe(OnRawMessageReceived);
         }
         private void OnRawMessageReceived(ResponseMessage message)
         {
@@ -51,9 +46,8 @@ namespace DataReceiver.Implementations
             }
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
-            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
